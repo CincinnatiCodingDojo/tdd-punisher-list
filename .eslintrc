@@ -1,0 +1,30 @@
+{
+  "parser"  : "babel-eslint",
+  "extends" : [
+    "standard",
+    "standard-react",
+    "plugin:import/warnings"
+  ],
+  "plugins" : [
+    "import"
+  ],
+  "env"     : {
+    "browser" : true,
+    "node" : true
+  },
+  "globals" : {
+    "window": false,
+    "__CLIENT__": false,
+    "__DEVTOOLS__": false,
+    "__INITIAL_STATE__": false,
+    "__HMR__": false
+  },
+  "rules": {
+    "semi" : [2, "always"],
+    "react/prop-types": 0,
+    "space-before-function-paren": [2, "never"],
+    "space-infix-ops": 0,
+    "max-len": [2, 120, 2],
+    "brace-style": [2, "stroustrup"]
+  }
+}
