@@ -1,5 +1,5 @@
-import createComponent  from './containers/store_locator';
-import reducer from './reducers';
+import createComponent from './containers/store_locator';
+import reducer, { REDUCER_KEY } from './reducers';
 
 /** @module ShoppingGrid */
 export {
@@ -17,5 +17,11 @@ export {
    * @function
    * @returns {reducer} The component's top level reducer
    */
-  reducer
+  reducer,
+
+  /**
+   * The redux reducer key
+   * @string
+   */
+  REDUCER_KEY
 };

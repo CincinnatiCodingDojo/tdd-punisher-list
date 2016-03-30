@@ -3,15 +3,16 @@
   "version": "0.0.1-beta",
   "description": "Kroger React Seed",
   "scripts": {
-    "start": "node src/server/main",
+    "start": "node dev-harness/main",
     "lint": "eslint .",
     "pretest": "npm run lint",
     "test": "tape -r babel-register src/client/**/*.spec.js | tap-dot",
-    "watch": "watch 'clear && npm test -s' src"
+    "watch": "watch 'npm test -s' src"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "0.9.1",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-redux": "^4.4.1",
@@ -35,7 +36,7 @@
     "eslint-plugin-babel": "^3.1.0",
     "eslint-plugin-react": "^4.2.3",
     "express": "^4.13.4",
-    "kroger-webpack-config": "0.0.3-beta",
+    "kroger-webpack-config": "^0.0.4-beta",
     "tap-dot": "1.0.4",
     "tape": "4.5.1",
     "watch": "0.17.1",

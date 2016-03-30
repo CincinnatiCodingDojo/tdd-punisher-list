@@ -1,15 +1,23 @@
-component:
-  image: docker.kroger.com/library/kroger-npm
-  working_dir: /app
-  command: npm start
-  volumes_from:
-    - npm
-  ports:
-    - 3000:3000
-npm:
-  image: docker.kroger.com/library/kroger-npm
-  volumes:
-    - .:/app
-  working_dir: /app
-  entrypoint: npm
-  command: --version
+version: '2'
+services:
+  component:
+    image: docker.kroger.com/library/kroger-npm
+    working_dir: /app
+    command: npm start
+    volumes_from:
+      - npm
+    ports:
+      - 3000:3000
+  test:
+    image: docker.kroger.com/library/kroger-npm
+    working_dir: /app
+    command: npm run watch
+    volumes_from:
+      - npm
+  npm:
+    image: docker.kroger.com/library/kroger-npm
+    volumes:
+      - .:/app
+    working_dir: /app
+    entrypoint: npm
+    command: --version

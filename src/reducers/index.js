@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import storeLocator from './store_locator';
+import locatedStore from './located_store';
+
+export const REDUCER_KEY = 'storeLocator';
 
 export default combineReducers({
-  storeLocator
+  locatedStore
 });
