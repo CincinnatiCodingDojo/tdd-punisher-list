@@ -1,7 +1,10 @@
 import createComponent from './containers/store_locator';
 import reducer, { REDUCER_KEY } from './reducers';
 
-/** @module ShoppingGrid */
+/**
+ * This index MUST export createComponent, reducer, and REDUCER_KEY to work
+ * with the dev harness.
+ */
 export {
 
   /**
@@ -20,7 +23,7 @@ export {
   reducer,
 
   /**
-   * The redux reducer key
+   * The name to use when the reducer is added via combineReducers
    * @string
    */
   REDUCER_KEY
