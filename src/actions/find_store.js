@@ -10,17 +10,18 @@ const locateStoreRequest = () => {
   };
 };
 
-const locateStoreOk = (response) => {
+const locateStoreOk = (payload) => {
   return {
     type: LOCATE_OK,
-    response
+    payload
   };
 };
 
-const locateStoreError = (err) => {
+const locateStoreError = (payload) => {
   return {
     type: LOCATE_ERROR,
-    err
+    payload,
+    error: true
   };
 };
 
@@ -35,11 +36,10 @@ export function locateStore(storeId) {
         query: `query { ${payload} }`
       })
       .then((res) => {
-        dispatch(locateStoreOk(res));
+        dispatch(locateStoreOk(res.data));
       })
       .catch((err) => {
         dispatch(locateStoreError(err));
-        throw err;
       });
   };
 }

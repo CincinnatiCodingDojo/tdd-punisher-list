@@ -18,6 +18,7 @@ services:
     image: docker.kroger.com/library/kroger-npm
     volumes:
       - .:/app
+      - ../watch:/watch
     working_dir: /app
     entrypoint: npm
     command: --version
