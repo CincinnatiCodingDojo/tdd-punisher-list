@@ -1,24 +1,10 @@
 import { connect } from 'react-redux';
 import { locateStore } from '../actions/find_store';
 import { REDUCER_KEY } from '../reducers';
+import createStoreLocator from '../components/store_locator';
 
 export default (React) => {
-  const StoreLocator = React.createClass({
-    handleClick() {
-      this.props.findStore(this.myTextInput.value);
-    },
-
-    render() {
-      return (
-        <div>
-            <input type="text" defaultValue="01400301" ref={(ref) => { this.myTextInput = ref; }}/>
-            <button type="submit" onClick={this.handleClick}>Find</button>
-            <hr />
-            <div>{this.props.store.addressLineOne}</div>
-        </div>
-      );
-    }
-  });
+  const StoreLocator = createStoreLocator(React);
 
   const mapStateToProps = (state) => {
     return {

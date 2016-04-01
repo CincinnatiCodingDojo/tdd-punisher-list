@@ -45,7 +45,7 @@ export default (state = initialState, action) => {
     case LOCATE_OK:
       return {
         ...state,
-        ...action.response.data.data.store
+        ...action.payload.data.store
       };
     case LOCATE_ERROR:
       return state;

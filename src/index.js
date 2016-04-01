@@ -1,4 +1,4 @@
-import createComponent from './containers/store_locator';
+import createComponent from './containers/store_locator.container';
 import reducer, { REDUCER_KEY } from './reducers';
 
 /**

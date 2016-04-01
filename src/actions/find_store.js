@@ -29,7 +29,7 @@ export function locateStore(storeId) {
   return (dispatch) => {
     dispatch(locateStoreRequest());
 
-    const payload = `store(storeId:"${storeId}"){addressLineOne}`;
+    const payload = `store(storeId:"${storeId}"){addressLineOne,brand}`;
 
     return axios
       .post('http://localhost:8080/graphql', {
