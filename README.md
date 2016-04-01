@@ -1,16 +1,39 @@
 ## Kroger React Seed
 
-### Docker Compose usage
+### Setup
 
 ```bash
-docker-compose run npm install
-docker-compose up
+git clone --depth 1 http://stash.kroger.com/scm/dcpce/kroger-component-seed.git ./<your-comp-dir-name>
+cd <your-comp-dir-name>
+make install
 ```
 
-Use `docker-compose run npm ...` to run npm commands.
+> `make install` is an alias for `sudo docker-compose run npm install` 
 
-**Having Trouble?: ** You may need to use `sudo` before `docker-compose`
+### Setup w/ BFF
 
-### Testing
+To see the component example working with the GraphQL BFF you need to have it running.
 
-WIP - we plan on splitting out the test runner stuff just like we did with webpack
+```bash
+git clone --depth 1 http://stash.kroger.com/scm/dcpce/bff-seed.git ./<your-bff-dir-name>
+cd <your-bff-dir-name>
+sudo docker-compose build
+sudo docker-compose up
+```
+
+### Start Dev Harness
+
+Starting the harness will:
+
+- Serve your component at [localhost:3000](localhost:3000)
+- Run and watch your tests
+
+```bash
+make
+```
+
+> `make` is an alias for `sudo docker-compose up` 
+
+### Run Arbitrary NPM commands
+
+Use `sudo docker-compose run npm ...` to run npm commands.
