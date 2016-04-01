@@ -9,9 +9,11 @@
   "globals" : {
   },
   "plugins": [
-    "react"
+    "react",
+    "babel"
   ],
   "rules": {
+    "babel/no-await-in-loop": 2,
     // Possible Error Causing Violations
     "comma-dangle": [2, "never"],
     "no-cond-assign": [2, "always"],
@@ -48,7 +50,7 @@
     "block-scoped-var": 2,
     "complexity": [2, 6],
     "consistent-return": 2,
-    "curly": [2, all],
+    "curly": [2, "all"],
     "default-case": 2,
     "dot-location": [2, "property"],
     "dot-notation": [2, {
@@ -146,7 +148,8 @@
     "no-restricted-modules": 0,
     "no-sync": 2,
     // Stylistic Violations
-    "array-bracket-spacing": [2, "never"],
+    "array-bracket-spacing": 0, // disabled use babel/* version
+    "babel/array-bracket-spacing": [2, "never"],
     "block-spacing": [2, "always"],
     "brace-style": [2, "1tbs", {
       "allowSingleLine": true
@@ -188,7 +191,8 @@
       "allowArrayEnd": false
     }],
     "max-nested-callbacks": [2, 5],
-    "new-cap": 0,
+    "new-cap": 0, // disabled use babel/* version
+    "babel/new-cap": 0,
     "new-parens": 2,
     "newline-after-var": [2, "always"],
     "no-array-constructor": 2,
@@ -210,7 +214,8 @@
       "allow": ["__INITIAL_STATE__", "__DEBUG__", "__DEBUG_NEW_WINDOW__", "_id"]
     }],
     "no-unneeded-ternary": 2,
-    "object-curly-spacing": [2, "always"],
+    "object-curly-spacing": 0, // disabled use babel/* version
+    "babel/object-curly-spacing": [2, "always"],
     "one-var": [2, "never"],
     "operator-assignment": [2, "always"],
     "operator-linebreak": [2, "after"],
@@ -232,19 +237,22 @@
     "spaced-comment": [2, "always"],
     "wrap-regex": 2,
     // ES6 Violations
-    "arrow-parens": ["error", "always"],
+    "arrow-parens": 0, // disabled use babel/* version
+    "babel/arrow-parens": [2, "always"],
     "arrow-spacing": [2, {
       "before": true,
       "after": true
     }],
     "constructor-super": 2,
-    "generator-star-spacing": [2, "before"],
+    "generator-star-spacing": 0, // disabled use babel/* version
+    "babel/generator-star-spacing": [2, "before"],
     "no-class-assign": 2,
     "no-const-assign": 2,
     "no-dupe-class-members": 2,
     "no-this-before-super": 2,
     "no-var": 2,
-    "object-shorthand": [2, "always"],
+    "object-shorthand": 0, // disabled use babel/* version
+    "babel/object-shorthand": [2, "always"],
     "prefer-arrow-callback": 2,
     "prefer-const": 2,
     "prefer-reflect": 0,

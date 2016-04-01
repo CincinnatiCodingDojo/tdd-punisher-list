@@ -1,5 +1,4 @@
-import 'babel-polyfill';
-import test from 'tape';
+import test from 'ava';
 import nock from 'nock';
 import sinon from 'sinon';
 import {
@@ -22,30 +21,24 @@ function respondFail() {
 }
 
 test('LOCATE_REQUEST returns the properly namespaced action', (assert) => {
-  assert.equal(
+  assert.is(
     LOCATE_REQUEST,
     'clicklist/storeLocator/LOCATE_REQUEST'
   );
-
-  assert.end();
 });
 
 test('LOCATE_OK returns the properly namespaced action', (assert) => {
-  assert.equal(
+  assert.is(
     LOCATE_OK,
     'clicklist/storeLocator/LOCATE_OK'
   );
-
-  assert.end();
 });
 
 test('LOCATE_ERROR returns the properly namespaced action', (assert) => {
-  assert.equal(
+  assert.is(
     LOCATE_ERROR,
     'clicklist/storeLocator/LOCATE_ERROR'
   );
-
-  assert.end();
 });
 
 test('locateStore dispatches LOCATE_REQUEST immediately', (assert) => {
@@ -59,8 +52,6 @@ test('locateStore dispatches LOCATE_REQUEST immediately', (assert) => {
   assert.true(dispatch.calledWith({
     type: LOCATE_REQUEST
   }));
-
-  assert.end();
 });
 
 test('locateStore calls graphql with correct store id', async (assert) => {
@@ -72,27 +63,27 @@ test('locateStore calls graphql with correct store id', async (assert) => {
 
   await locateStore('kitties')(sinon.spy());
 
-  assert.true(graphql.isDone(), "/graphql called with correct storeId");
-  assert.end()
+  assert.true(graphql.isDone(), '/graphql called with correct storeId');
 });
 
 test('locateStore dispatches LOCATE_OK on successful request', async (assert) => {
   respondOk();
 
   const dispatch = sinon.spy();
+
   await locateStore('puppies')(dispatch);
 
   assert.true(dispatch.calledWith({
     type: LOCATE_OK,
     payload: 'OK'
   }));
-  assert.end();
 });
 
 test('locateStore dispatches LOCATE_ERROR on failed request', async (assert) => {
   respondFail();
 
   const dispatch = sinon.spy();
+
   await locateStore('puppies')(dispatch);
 
   assert.true(dispatch.calledWith({
@@ -100,5 +91,4 @@ test('locateStore dispatches LOCATE_ERROR on failed request', async (assert) => 
     error: true,
     payload: sinon.match.has('message', 'oh no')
   }));
-  assert.end();
 });

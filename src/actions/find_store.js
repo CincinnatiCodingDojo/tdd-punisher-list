@@ -35,11 +35,7 @@ export function locateStore(storeId) {
       .post('http://localhost:8080/graphql', {
         query: `query { ${payload} }`
       })
-      .then((res) => {
-        dispatch(locateStoreOk(res.data));
-      })
-      .catch((err) => {
-        dispatch(locateStoreError(err));
-      });
+      .then(({ data }) => dispatch(locateStoreOk(data)))
+      .catch((err) => dispatch(locateStoreError(err)));
   };
 }
