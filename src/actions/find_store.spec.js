@@ -57,7 +57,7 @@ test('locateStore dispatches LOCATE_REQUEST immediately', (assert) => {
 test('locateStore calls graphql with correct store id', async (assert) => {
   const graphql = nock('http://localhost:8080')
     .post('/graphql', {
-      query: 'query { store(storeId:"kitties"){addressLineOne} }'
+      query: 'query { store(storeId:"kitties"){addressLineOne,brand} }'
     })
     .reply(200, 'OK');
 
