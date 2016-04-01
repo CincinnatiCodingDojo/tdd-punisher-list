@@ -7,7 +7,7 @@
     "lint": "eslint .",
     "pretest": "npm run lint",
     "test": "ava",
-    "watch": "ava --watch"
+    "watch": "ava --poll"
   },
   "author": "Kroger",
   "license": "UNLICENSED",
@@ -23,7 +23,7 @@
     "sinon": "1.17.3"
   },
   "devDependencies": {
-    "ava": "0.13.0",
+    "ava": "0.13.0-kroger",
     "enzyme": "2.2.0",
     "eslint": "2.5.3",
     "eslint-config-kroger": "0.2.0",
