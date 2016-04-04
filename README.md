@@ -35,6 +35,34 @@ make
 
 > `make` is an alias for `sudo docker-compose up` 
 
+### Publishing Your Component to [npm.kroger.com](http://npm.kroger.com)
+
+1. Update the following fields in your `package.json`
+> It is recommended to start your component at version 1.0.0
+```json
+{
+  "name": "my-component",
+  "version": "1.0.0",
+  "description": "Cool awesome thing that my component does!"
+  ... 
+  // Don't edit anything else at this time
+}
+```
+
+1. Check that you are using npm.kroger.com as your npm registry
+> `npm get registry` should return http://npm.kroger.com/. If it's not
+then run `npm set registry http://npm.kroger.com`
+
+1. Run adduser to login to npm
+> `npm adduser` and follow the prompts
+
+1. Publish your component
+> `npm publish`
+
+1. When you make any changes, increment your package.json version.
+>Follow the guideline: **Breaking.Feature.FixOrChore** when considering
+your new version number. Then publish again.
+
 ### FAQ
 
 ##### I changed my component code but it's not showing up
