@@ -27,7 +27,7 @@
     "enzyme": "2.2.0",
     "eslint": "2.5.3",
     "eslint-config-kroger": "0.2.0",
-    "kroger-component-dev-harness": "0.2.0"
+    "kroger-component-dev-harness": "0.2.1"
   },
   "ava": {
     "files": [
