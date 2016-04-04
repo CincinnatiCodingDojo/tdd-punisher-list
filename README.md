@@ -37,3 +37,7 @@ make
 ### Run Arbitrary NPM commands
 
 Use `sudo docker-compose run npm ...` to run npm commands.
+
+### How to Semver
+
+How should you increment your component version? Just remember: **Breaking.Feature.FixOrChore**
