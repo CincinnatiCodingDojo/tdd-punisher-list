@@ -27,7 +27,8 @@
     "enzyme": "2.2.0",
     "eslint": "2.5.3",
     "eslint-config-kroger": "0.2.1",
-    "kroger-component-dev-harness": "0.2.1"
+    "kroger-component-dev-harness": "0.2.1",
+    "react-addons-test-utils": "0.14.7"
   },
   "ava": {
     "files": [

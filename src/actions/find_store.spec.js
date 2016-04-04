@@ -11,7 +11,7 @@ import {
 function respondOk() {
   nock('http://localhost:8080')
     .intercept('/graphql', 'POST')
-    .reply(200, 'OK');
+    .reply(200, { data: { store: 'OK' } });
 }
 
 function respondFail() {
@@ -77,6 +77,7 @@ test('locateStore dispatches LOCATE_OK on successful request', async (assert) =>
     type: LOCATE_OK,
     payload: 'OK'
   }));
+
 });
 
 test('locateStore dispatches LOCATE_ERROR on failed request', async (assert) => {

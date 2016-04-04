@@ -5,50 +5,32 @@ import {
 } from '../actions/find_store';
 
 const initialState = {
-  addressLineOne: '',
-  searchOriginDistance: '',
-  managementDivisionNumber: '',
-  storeNumber: '',
-  facilityName: '',
-  brand: '',
-  legalName: '',
-  loyaltyDivisionNumber: '',
-  phoneNumber: '',
-  storeType: '',
-  vanityName: '',
-  city: '',
-  state: '',
-  zipCode: '',
-  latLong: '',
-  timeZone: '',
-  sundayClose: '',
-  sundayOpen: '',
-  mondayClose: '',
-  mondayOpen: '',
-  tuesdayClose: '',
-  tuesdayOpen: '',
-  wednesdayClose: '',
-  wednesdayOpen: '',
-  thursdayClose: '',
-  thursdayOpen: '',
-  fridayClose: '',
-  fridayOpen: '',
-  saturdayClose: '',
-  saturdayOpen: '',
-  departments: {}
+  store: {},
+  loading: false
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case LOCATE_REQUEST:
-      return state;
-    case LOCATE_OK:
       return {
         ...state,
-        ...action.payload.data.store
+        loading: true
+      };
+    case LOCATE_OK:
+      return {
+        store: {
+          ...state.store,
+          ...action.payload
+        },
+        loading: false
       };
     case LOCATE_ERROR:
-      return state;
+      return {
+        store: {
+          ...state.store
+        },
+        loading: false
+      };
     default:
       return state;
   }
