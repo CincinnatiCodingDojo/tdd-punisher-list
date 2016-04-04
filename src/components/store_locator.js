@@ -1,6 +1,4 @@
 export default (React) => {
-  const { shape, string, func } = React.PropTypes;
-
   const Component = ({ store, findStore }) => {
     let myTextInput = null;
     const handleClick = () => findStore(myTextInput.value);
@@ -15,6 +13,8 @@ export default (React) => {
       </div>
     );
   };
+
+  const { shape, string, func } = React.PropTypes;
 
   Component.propTypes = {
     store: shape({
