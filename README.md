@@ -5,6 +5,7 @@
 ```bash
 git clone --depth 1 http://stash.kroger.com/scm/dcpce/kroger-component-seed.git ./<your-comp-dir-name>
 cd <your-comp-dir-name>
+git remote set-url origin <your-stash-repo-url>
 make install
 ```
 
@@ -25,7 +26,7 @@ sudo docker-compose up
 
 Starting the harness will:
 
-- Serve your component at [localhost:3000](localhost:3000)
+- Serve your component at [localhost:3000](http://localhost:3000)
 - Run and watch your tests
 
 ```bash
@@ -34,10 +35,20 @@ make
 
 > `make` is an alias for `sudo docker-compose up` 
 
-### Run Arbitrary NPM commands
+### FAQ
 
-Use `sudo docker-compose run npm ...` to run npm commands.
+##### I changed my component code but it's not showing up
 
-### How to Semver
+> Run `docker-compose down` and then `make` again
 
-How should you increment your component version? Just remember: **Breaking.Feature.FixOrChore**
+##### My docker-compose logs are gone, but `docker ps` reports it's still running
+
+> Running `docker-compose logs` will reattach to the containers
+
+##### How do I run arbitrary NPM commands in docker?
+
+> Use `sudo docker-compose run npm ...` to run npm commands.
+
+##### How shall I increment my component version?
+
+> Just remember: **Breaking.Feature.FixOrChore**
