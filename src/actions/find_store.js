@@ -32,6 +32,8 @@ export function locateStore(storeId) {
 
     const payload = `store(storeId:"${storeId}"){addressLineOne,brand}`;
 
+    // We are using axios, which works for any BFF, but if you are doing
+    // GraphQL you should consider using Lokka: https://github.com/kadirahq/lokka
     return axios
       .post('http://localhost:8080/graphql', {
         query: `query { ${payload} }`
