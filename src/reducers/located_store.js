@@ -1,12 +1,14 @@
 import {
   LOCATE_OK,
   LOCATE_REQUEST,
-  LOCATE_ERROR
+  LOCATE_ERROR,
+  LOCATE_INPUT_CHANGE
 } from '../actions/find_store';
 
 const initialState = {
   store: {},
-  loading: false
+  loading: false,
+  inputVal: '01400301'
 };
 
 export default (state = initialState, action) => {
@@ -18,6 +20,7 @@ export default (state = initialState, action) => {
       };
     case LOCATE_OK:
       return {
+        ...state,
         store: {
           ...state.store,
           ...action.payload
@@ -26,10 +29,13 @@ export default (state = initialState, action) => {
       };
     case LOCATE_ERROR:
       return {
-        store: {
-          ...state.store
-        },
+        ...state,
         loading: false
+      };
+    case LOCATE_INPUT_CHANGE:
+      return {
+        ...state,
+        inputVal: action.payload
       };
     default:
       return state;

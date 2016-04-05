@@ -3,6 +3,7 @@ import axios from 'axios';
 export const LOCATE_REQUEST = 'clicklist/storeLocator/LOCATE_REQUEST';
 export const LOCATE_OK = 'clicklist/storeLocator/LOCATE_OK';
 export const LOCATE_ERROR = 'clicklist/storeLocator/LOCATE_ERROR';
+export const LOCATE_INPUT_CHANGE = 'clicklist/storeLocator/LOCATE_INPUT_CHANGE';
 
 const locateStoreRequest = () => {
   return {
@@ -39,3 +40,10 @@ export function locateStore(storeId) {
       .catch((err) => dispatch(locateStoreError(err)));
   };
 }
+
+export const inputValChange = (payload) => {
+  return {
+    type: LOCATE_INPUT_CHANGE,
+    payload
+  };
+};

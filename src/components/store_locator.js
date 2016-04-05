@@ -1,16 +1,20 @@
 export default (React) => {
-  const Component = ({ store, findStore, loading }) => {
-    let myTextInput = undefined;
-    const handleClick = () => findStore(myTextInput.value);
+  const Component = ({ store, locateStore, loading, inputVal, inputValChange }) => {
+    const handleInputChange = (evt) => inputValChange(evt.target.value);
+    const handleClick = () => locateStore(inputVal);
 
     return (
-      <div>
-        <input type="text" defaultValue="01400301" ref={(ref) => { myTextInput = ref; }}/>
+      <div className="StoreLocator">
+        <input type="text" value={inputVal} onChange={handleInputChange}/>
         <button type="submit" onClick={handleClick}>Find</button>
         <hr />
-        { loading && <div className="loading">Loading...</div> }
-        <div>{store.brand}</div>
-        <div>{store.addressLineOne}</div>
+        { loading && <div className="StoreLocator-loading">Loading...</div> }
+        { store && (
+          <div className="StoreLocator-results">
+            <div>{store.brand}</div>
+            <div>{store.addressLineOne}</div>
+          </div>
+        )}
       </div>
     );
   };

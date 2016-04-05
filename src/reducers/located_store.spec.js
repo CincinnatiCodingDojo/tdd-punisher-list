@@ -10,7 +10,7 @@ test('returns the default state', (assert) => {
   const initialState = undefined;
   const action = {};
   const reducedState = reducer(initialState, action);
-  const expectedState = { store: {}, loading: false};
+  const expectedState = { store: {}, loading: false, inputVal: '01400301' };
 
   assert.same(reducedState, expectedState);
 });
