@@ -1,7 +1,17 @@
+import createStoreResult from './store_locator_result';
+
 export default (React) => {
+  const StoreLocatorResult = createStoreResult(React);
+
   const Component = ({ store, locateStore, loading, inputVal, inputValChange }) => {
     const handleInputChange = (evt) => inputValChange(evt.target.value);
     const handleClick = () => locateStore(inputVal);
+
+    const showStoreResult = () => {
+      if (Object.keys(store || {}).length) {
+        return <StoreLocatorResult store={store} />;
+      }
+    };
 
     return (
       <div className="StoreLocator">
@@ -9,12 +19,7 @@ export default (React) => {
         <button type="submit" onClick={handleClick}>Find</button>
         <hr />
         { loading && <div className="StoreLocator-loading">Loading...</div> }
-        { store && (
-          <div className="StoreLocator-results">
-            <div>{store.brand}</div>
-            <div>{store.addressLineOne}</div>
-          </div>
-        )}
+        { showStoreResult() }
       </div>
     );
   };
