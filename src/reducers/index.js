@@ -1,8 +1,13 @@
 import { combineReducers } from 'redux';
 import locatedStore from './located_store';
 
-export const REDUCER_KEY = 'storeLocator';
+let REDUCER_KEY = '__unnamed__';
 
-export default combineReducers({
-  locatedStore
-});
+export const getLocalState = (globalState) => globalState[REDUCER_KEY];
+
+export default (key) => {
+  REDUCER_KEY = key;
+  return combineReducers({
+    locatedStore
+  });
+}

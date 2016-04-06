@@ -1,8 +1,8 @@
 import createComponent from './containers/store_locator.container';
-import reducer, { REDUCER_KEY } from './reducers';
+import reducer from './reducers';
 
 /**
- * This index MUST export createComponent, reducer, and REDUCER_KEY to work
+ * This index MUST export createComponent and reducer to work
  * with the dev harness.
  */
 export {
@@ -20,11 +20,5 @@ export {
    * @function
    * @returns {reducer} The component's top level reducer
    */
-  reducer,
-
-  /**
-   * The name to use when the reducer is added via combineReducers
-   * @string
-   */
-  REDUCER_KEY
+  reducer
 };
