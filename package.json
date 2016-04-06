@@ -2,12 +2,14 @@
   "name": "kroger-component-seed",
   "version": "0.1.0",
   "description": "Kroger React Component Seed",
+  "main": "build/index.js",
   "scripts": {
     "start": "harness",
     "lint": "eslint .",
     "pretest": "npm run lint",
     "test": "ava",
-    "watch": "ava --poll"
+    "watch": "ava --poll",
+    "build": "NODE_ENV=production ./node_modules/.bin/webpack src/index.js --config webpack.config.prod.js"
   },
   "author": "Kroger",
   "license": "UNLICENSED",
@@ -31,22 +33,9 @@
     "react-addons-test-utils": "0.14.7"
   },
   "ava": {
-    "files": [
-      "src/**/*.spec.js"
-    ],
-    "source": [
-      "src/**/*.js"
-    ],
-    "require": [
-      "babel-register"
-    ],
-    "babel": "inherit"
-  },
-  "babel": {
-    "presets": [
-      "es2015",
-      "stage-0",
-      "react"
-    ]
+    "files": ["src/**/*.spec.js"],
+    "source": ["src/**/*.js"],
+    "require": ["babel-register"],
+    "babel": { "presets": ["es2015", "stage-0", "react"] }
   }
 }
