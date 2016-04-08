@@ -1,9 +1,5 @@
-import {
-  LOCATE_OK,
-  LOCATE_REQUEST,
-  LOCATE_ERROR,
-  LOCATE_INPUT_CHANGE
-} from '../actions/find_store';
+import { locateStore, inputValChange } from '../actions/find_store';
+import { createReducer } from 'redux-act';
 
 const initialState = {
   store: {},
@@ -11,33 +7,30 @@ const initialState = {
   inputVal: '01400301'
 };
 
-export default (state = initialState, action) => {
-  switch (action.type) {
-    case LOCATE_REQUEST:
-      return {
-        ...state,
-        loading: true
-      };
-    case LOCATE_OK:
-      return {
-        ...state,
-        store: {
-          ...state.store,
-          ...action.payload
-        },
-        loading: false
-      };
-    case LOCATE_ERROR:
-      return {
-        ...state,
-        loading: false
-      };
-    case LOCATE_INPUT_CHANGE:
-      return {
-        ...state,
-        inputVal: action.payload
-      };
-    default:
-      return state;
-  }
-};
+export default createReducer({
+
+  [locateStore.request]: (state, payload) => ({
+    ...state,
+    loading: true
+  }),
+
+  [locateStore.ok]: (state, payload) => ({
+    ...state,
+    store: {
+      ...state.store,
+      ...payload
+    },
+    loading: false
+  }),
+
+  [locateStore.error]: (state, payload) => ({
+    ...state,
+    loading: false
+  }),
+
+  [inputValChange]: (state, payload) => ({
+    ...state,
+    inputVal: payload
+  })
+
+}, initialState);

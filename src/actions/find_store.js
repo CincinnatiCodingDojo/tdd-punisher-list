@@ -1,51 +1,22 @@
 import axios from 'axios';
+import { createAction } from 'redux-act';
+import { createActionAsync } from 'redux-act-async';
 
-export const LOCATE_REQUEST = 'clicklist/storeLocator/LOCATE_REQUEST';
-export const LOCATE_OK = 'clicklist/storeLocator/LOCATE_OK';
-export const LOCATE_ERROR = 'clicklist/storeLocator/LOCATE_ERROR';
-export const LOCATE_INPUT_CHANGE = 'clicklist/storeLocator/LOCATE_INPUT_CHANGE';
+export const locateStore = createActionAsync('clicklist/storeLocator/LOCATE_STORE', locateApi);
+export const inputValChange = createAction('clicklist/storeLocator/LOCATE_INPUT_CHANGE');
 
-const locateStoreRequest = () => {
-  return {
-    type: LOCATE_REQUEST
-  };
-};
+function locateApi(storeId) {
+  const query = `{
+    store(storeId:"${storeId}") {
+      addressLineOne,
+      brand
+    }
+  }`;
+  const unwrapResponse = ({ data }) => data.data.store;
 
-const locateStoreOk = (payload) => {
-  return {
-    type: LOCATE_OK,
-    payload
-  };
-};
-
-const locateStoreError = (payload) => {
-  return {
-    type: LOCATE_ERROR,
-    payload,
-    error: true
-  };
-};
-
-export function locateStore(storeId) {
-  return (dispatch) => {
-    dispatch(locateStoreRequest());
-
-    const payload = `store(storeId:"${storeId}"){addressLineOne,brand}`;
-
-    // We are using axios, which works for any BFF, but if you are doing
-    // GraphQL you should consider using Lokka: https://github.com/kadirahq/lokka
-    return axios
-      .post('http://localhost:8080/graphql', {
-        query: `query { ${payload} }`
-      })
-      .then(({ data }) => dispatch(locateStoreOk(data.data.store)))
-      .catch((err) => dispatch(locateStoreError(err)));
-  };
+  // We are using axios, which works for any BFF, but if you are doing
+  // GraphQL you should consider using Lokka: https://github.com/kadirahq/lokka
+  return axios
+    .post('http://localhost:8080/graphql', { query })
+    .then(unwrapResponse);
 }
-
-export const inputValChange = (payload) => {
-  return {
-    type: LOCATE_INPUT_CHANGE,
-    payload
-  };
-};
