@@ -1,13 +1,27 @@
 import { combineReducers } from 'redux';
 import locatedStore from './located_store';
 
-let REDUCER_KEY = '__unnamed__';
+const reducer = (path) => combineReducers({
+  locatedStore
+});
 
-export const getLocalState = (globalState) => globalState[REDUCER_KEY];
+/////////// external api
+
+// todo: might not need to nest
+
+let REDUCER_PATH = '__unnamed__';
+
+export const getLocalState = (state, path = REDUCER_PATH.split('.')) => {
+  let [nextKey, ...restKeys] = path;
+
+  if (restKeys.length === 0) {
+    return state[nextKey];
+  } else {
+    return getLocalState(state[nextKey], restKeys);
+  }
+};
 
 export default (key) => {
-  REDUCER_KEY = key;
-  return combineReducers({
-    locatedStore
-  });
+  REDUCER_PATH = key;
+  return reducer(REDUCER_PATH);
 }

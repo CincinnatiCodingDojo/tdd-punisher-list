@@ -1,36 +1,25 @@
 import { locateStore, inputValChange } from '../actions/find_store';
 import { createReducer } from 'redux-act';
+import { Map } from 'immutable';
 
-const initialState = {
-  store: {},
-  loading: false,
-  inputVal: '01400301'
-};
+const initialState = Map();
 
 export default createReducer({
+  [locateStore.request]: (state, { id }) => {
+    return state.setIn([id, 'loading'], true);
+  },
 
-  [locateStore.request]: (state, payload) => ({
-    ...state,
-    loading: true
-  }),
+  [locateStore.ok]: (state, { id, store }) => {
+    return state
+      .mergeIn([id, 'store'], store)
+      .setIn([id, 'loading'], false);
+  },
 
-  [locateStore.ok]: (state, payload) => ({
-    ...state,
-    store: {
-      ...state.store,
-      ...payload
-    },
-    loading: false
-  }),
+  [locateStore.error]: (state, { id }) => {
+    return state.setIn([id, 'loading'], false);
+  },
 
-  [locateStore.error]: (state, payload) => ({
-    ...state,
-    loading: false
-  }),
-
-  [inputValChange]: (state, payload) => ({
-    ...state,
-    inputVal: payload
-  })
-
+  [inputValChange]: (state, { id, newVal }) => {
+    return state.setIn([id, 'inputVal'], newVal);
+  }
 }, initialState);

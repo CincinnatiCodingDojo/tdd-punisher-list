@@ -2,7 +2,10 @@
   "name": "kroger-component-seed",
   "version": "0.1.0",
   "description": "Kroger React Component Seed",
-  "main": "build/index.js",
+  "main": "./build/index.js",
+  "files": [
+    "build"
+  ],
   "scripts": {
     "start": "harness",
     "lint": "eslint .",
@@ -16,7 +19,7 @@
   "dependencies": {
     "axios": "0.9.1",
     "babel-polyfill": "6.7.4",
-    "nock": "7.7.2",
+    "immutable": "3.7.6",
     "react": "0.14.7",
     "react-dom": "0.14.7",
     "react-redux": "4.4.1",
@@ -32,6 +35,7 @@
     "eslint": "2.5.3",
     "eslint-config-kroger": "0.2.2",
     "kroger-component-dev-harness": "0.2.1",
+    "nock": "7.7.2",
     "react-addons-test-utils": "0.14.7"
   },
   "ava": {
