@@ -9,7 +9,7 @@ git remote set-url origin <your-stash-repo-url>
 make install
 ```
 
-> `make install` is an alias for `sudo docker-compose run npm install` 
+> `make install` is an alias for `sudo docker-compose run npm install`
 
 ### Setup w/ BFF
 
@@ -33,7 +33,7 @@ Starting the harness will:
 make
 ```
 
-> `make` is an alias for `sudo docker-compose up` 
+> `make` is an alias for `sudo docker-compose up`
 
 ### Publishing Your Component to [npm.kroger.com](http://npm.kroger.com)
 
@@ -44,7 +44,7 @@ make
   "name": "my-component",
   "version": "1.0.0",
   "description": "Cool awesome thing that my component does!"
-  ... 
+  ...
   // Don't edit anything else at this time
 }
 ```
@@ -80,3 +80,13 @@ your new version number. Then publish again.
 ##### How shall I increment my component version?
 
 > Just remember: **Breaking.Feature.FixOrChore**
+
+##### I'm getting ERROR: Couldn't connect to Docker daemon - you might need to run `docker-machine start default` on a Mac.
+
+> This is a known issue we haven't solved yet. For now, presuming you have node installed locally you can run
+```
+npm install
+npm start
+```
+
+This will bring up the dev harness on http://localhost:3000
