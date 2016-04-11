@@ -34,7 +34,7 @@
     "enzyme": "2.2.0",
     "eslint": "2.5.3",
     "eslint-config-kroger": "0.2.2",
-    "kroger-component-dev-harness": "0.2.1",
+    "kroger-component-dev-harness": "0.3.0",
     "nock": "7.7.2",
     "react-addons-test-utils": "0.14.7"
   },
