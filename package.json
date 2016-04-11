@@ -1,10 +1,10 @@
 {
   "name": "kroger-component-seed",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Kroger React Component Seed",
-  "main": "./build/index.js",
+  "main": "./src/index.js",
   "files": [
-    "build"
+    "src"
   ],
   "scripts": {
     "start": "harness",
@@ -34,7 +34,7 @@
     "enzyme": "2.2.0",
     "eslint": "2.5.3",
     "eslint-config-kroger": "0.2.2",
-    "kroger-component-dev-harness": "0.3.0",
+    "kroger-component-dev-harness": "1.0.0",
     "nock": "7.7.2",
     "react-addons-test-utils": "0.14.7"
   },
