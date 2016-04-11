@@ -8,7 +8,6 @@ export default (React) => {
   const StoreLocator = createStoreLocator(React);
 
   const mapStateToProps = (globalState, ownProps) => {
-    // todo: might not need to import immutable
     const localState = getLocalState(globalState).locatedStore.get(ownProps.id) || Map();
     const { store, inputVal, loading } = localState.toJS();
 
