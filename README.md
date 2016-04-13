@@ -3,23 +3,21 @@
 ### Setup
 
 ```bash
-git clone --depth 1 http://stash.kroger.com/scm/dcpce/kroger-component-seed.git ./<your-comp-dir-name>
+git clone http://stash.kroger.com/scm/dcpce/kroger-component-seed.git <your-comp-dir-name>
 cd <your-comp-dir-name>
 git remote set-url origin <your-stash-repo-url>
-make install
+npm install
 ```
-
-> `make install` is an alias for `sudo docker-compose run npm install`
 
 ### Setup w/ BFF
 
-To see the component example working with the GraphQL BFF you need to have it running.
+To see the component example working with the GraphQL BFF you need to also clone it and have it running.
 
 ```bash
-git clone --depth 1 http://stash.kroger.com/scm/dcpce/bff-seed.git ./<your-bff-dir-name>
+git clone http://stash.kroger.com/scm/dcpce/bff-seed.git <your-bff-dir-name>
 cd <your-bff-dir-name>
-sudo docker-compose build
-sudo docker-compose up
+docker-compose build
+docker-compose up
 ```
 
 ### Start Dev Harness
@@ -27,13 +25,17 @@ sudo docker-compose up
 Starting the harness will:
 
 - Serve your component at [localhost:3000](http://localhost:3000)
-- Run and watch your tests
 
 ```bash
-make
+npm start
 ```
 
-> `make` is an alias for `sudo docker-compose up`
+### Run Tests
+
+```bash
+npm test
+npm test -- --watch
+```
 
 ### Publishing Your Component to [npm.kroger.com](http://npm.kroger.com)
 
@@ -65,28 +67,10 @@ your new version number. Then publish again.
 
 ### FAQ
 
-##### I changed my component code but it's not showing up
+##### Docker commands are failing
 
-> Run `docker-compose down` and then `make` again
+> Try `sudo` before your command.
 
-##### My docker-compose logs are gone, but `docker ps` reports it's still running
+##### How shalt thy increment thus component version?
 
-> Running `docker-compose logs` will reattach to the containers
-
-##### How do I run arbitrary NPM commands in docker?
-
-> Use `sudo docker-compose run npm ...` to run npm commands.
-
-##### How shall I increment my component version?
-
-> Just remember: **Breaking.Feature.FixOrChore**
-
-##### I'm getting ERROR: Couldn't connect to Docker daemon - you might need to run `docker-machine start default` on a Mac.
-
-> This is a known issue we haven't solved yet. For now, presuming you have node installed locally you can run
-```
-npm install
-npm start
-```
-
-This will bring up the dev harness on http://localhost:3000
+> Thou shalt remember thy version mantra: **Breaking.Feature.FixOrChore**

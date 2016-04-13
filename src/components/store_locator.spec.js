@@ -18,24 +18,11 @@ test('hides loading when prop is false', (assert) => {
   wrapper.should.not.have.descendants('.StoreLocator-loading');
 });
 
-test('shows results when store is defined', (assert) => {
-  const store = { brand: 'foo', addressLineOne: 'bar' };
-  const wrapper = render(<Component store={store} />);
-
-  wrapper.should.have.descendants('.StoreLocator-results');
-});
-
-test('hides results when store is undefined', (assert) => {
-  const wrapper = render(<Component />);
-
-  wrapper.should.not.have.descendants('.StoreLocator-results');
-});
-
 test('calls locateStore when button is clicked', (assert) => {
   const spy = sinon.spy();
   const wrapper = shallow(<Component locateStore={spy} />);
 
-  wrapper.find('button').simulate('click');
+  wrapper.find('.StoreLocator-btn').simulate('click');
   spy.should.be.called;
 });
 
@@ -44,6 +31,6 @@ test('calls locateStoreInputChange when input is changed', (assert) => {
   const wrapper = shallow(<Component inputValChange={spy} />);
   const evt = { target: { value: 'kittens!' } };
 
-  wrapper.find('input').simulate('change', evt);
+  wrapper.find('.StoreLocator-input').simulate('change', evt);
   spy.should.be.calledWith('kittens!');
 });

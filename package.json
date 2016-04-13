@@ -9,9 +9,8 @@
   "scripts": {
     "start": "harness",
     "lint": "eslint .",
-    "test": "ava",
-    "watch": "ava --poll",
-    "build": "NODE_ENV=production ./node_modules/.bin/webpack src/index.js --config webpack.config.prod.js"
+    "pretest": "npm run lint",
+    "test": "ava"
   },
   "author": "Kroger",
   "license": "UNLICENSED",
@@ -21,7 +20,7 @@
     "immutable": "3.7.6",
     "react": "0.14.7",
     "react-dom": "0.14.7",
-    "react-kuic": "0.0.5",
+    "react-kuic": "0.0.8",
     "react-redux": "4.4.1",
     "redux": "3.3.1",
     "redux-act": "0.4.0",
@@ -36,8 +35,8 @@
     "chai-immutable": "^1.5.4",
     "enzyme": "2.2.0",
     "eslint": "2.5.3",
-    "eslint-config-kroger": "0.2.2",
-    "kroger-component-dev-harness": "1.1.0",
+    "eslint-config-kroger": "1.0.0",
+    "kroger-component-dev-harness": "1.1.1",
     "nock": "7.7.2",
     "react-addons-test-utils": "0.14.7",
     "sinon-chai": "^2.8.0"

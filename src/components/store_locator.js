@@ -1,5 +1,5 @@
 import createStoreResult from './store_locator_result';
-import { Button, Input } from 'react-kuic';
+import { Button, Input, Spinner, Text } from 'react-kuic';
 
 export default (React) => {
   const StoreLocatorResult = createStoreResult(React);
@@ -8,17 +8,17 @@ export default (React) => {
     const handleInputChange = (evt) => inputValChange(evt.target.value);
     const handleClick = () => locateStore(inputVal);
 
-    const showStoreResult = () => Object.keys(store || {}).length &&
-      <StoreLocatorResult store={store} />;
-
     return (
-      <div className="StoreLocator">
-        <Input type="text" value={inputVal} onChange={handleInputChange}/>
-        <Button type="submit" onClick={handleClick}>Find</Button>
-        <hr />
-        { loading && <div className="StoreLocator-loading">Loading...</div> }
-        { showStoreResult() }
-      </div>
+      <Text className="StoreLocator" size="14">
+        <Text size="16">Store Locator</Text>
+        <br/>
+        <Input className="StoreLocator-input" kind="text" value={inputVal} onChange={handleInputChange}/>
+        <Button className="StoreLocator-btn" type="submit" onClick={handleClick}>Hello</Button>
+        <br/>
+        { loading ?
+          <Spinner className="StoreLocator-loading" /> :
+          <StoreLocatorResult className="StoreLocator-results" store={store || {}} /> }
+      </Text>
     );
   };
 
