@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { locateStore, inputValChange } from '../actions/find_store';
-import { getLocalState } from '../reducers';
+import { getLocalState } from '../reducers/index';
 import createStoreLocator from '../components/store_locator';
 import { Map } from 'immutable';
 

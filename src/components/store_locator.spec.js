@@ -1,7 +1,7 @@
 import React from 'react';
 import test from 'ava';
-import { render, shallow } from 'enzyme';
 import sinon from 'sinon';
+import { render, shallow } from 'enzyme';
 import component from './store_locator';
 
 const Component = component(React);
@@ -9,26 +9,26 @@ const Component = component(React);
 test('shows loading when prop is true', (assert) => {
   const wrapper = render(<Component loading={true} />);
 
-  assert.true(wrapper.find('.StoreLocator-loading').length === 1);
+  wrapper.should.have.descendants('.StoreLocator-loading');
 });
 
 test('hides loading when prop is false', (assert) => {
   const wrapper = render(<Component loading={false} />);
 
-  assert.true(wrapper.find('.StoreLocator-loading').length === 0);
+  wrapper.should.not.have.descendants('.StoreLocator-loading');
 });
 
 test('shows results when store is defined', (assert) => {
   const store = { brand: 'foo', addressLineOne: 'bar' };
   const wrapper = render(<Component store={store} />);
 
-  assert.true(wrapper.find('.StoreLocator-results').length === 1);
+  wrapper.should.have.descendants('.StoreLocator-results');
 });
 
 test('hides results when store is undefined', (assert) => {
   const wrapper = render(<Component />);
 
-  assert.true(wrapper.find('.StoreLocator-results').length === 0);
+  wrapper.should.not.have.descendants('.StoreLocator-results');
 });
 
 test('calls locateStore when button is clicked', (assert) => {
@@ -36,7 +36,7 @@ test('calls locateStore when button is clicked', (assert) => {
   const wrapper = shallow(<Component locateStore={spy} />);
 
   wrapper.find('button').simulate('click');
-  assert.true(spy.called);
+  spy.should.be.called;
 });
 
 test('calls locateStoreInputChange when input is changed', (assert) => {
@@ -45,5 +45,5 @@ test('calls locateStoreInputChange when input is changed', (assert) => {
   const evt = { target: { value: 'kittens!' } };
 
   wrapper.find('input').simulate('change', evt);
-  assert.true(spy.calledWith('kittens!'));
+  spy.should.be.calledWith('kittens!');
 });

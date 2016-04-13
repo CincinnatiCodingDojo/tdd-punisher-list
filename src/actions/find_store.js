@@ -12,11 +12,11 @@ function locateApi({ id, storeId }) {
       brand
     }
   }`;
-  const unwrapResponse = ({ data }) => ({ id, store: data.data.store});
+  const mapToPayload = ({ data }) => ({ id, store: data.data.store });
 
   // We are using axios, which works for any BFF, but if you are doing
   // GraphQL you should consider using Lokka: https://github.com/kadirahq/lokka
   return axios
     .post('http://localhost:8080/graphql', { query })
-    .then(unwrapResponse);
+    .then(mapToPayload);
 }

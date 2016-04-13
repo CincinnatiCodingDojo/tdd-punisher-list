@@ -7,11 +7,8 @@ export default (React) => {
     const handleInputChange = (evt) => inputValChange(evt.target.value);
     const handleClick = () => locateStore(inputVal);
 
-    const showStoreResult = () => {
-      if (Object.keys(store || {}).length) {
-        return <StoreLocatorResult store={store} />;
-      }
-    };
+    const showStoreResult = () => Object.keys(store || {}).length &&
+      <StoreLocatorResult store={store} />;
 
     return (
       <div className="StoreLocator">

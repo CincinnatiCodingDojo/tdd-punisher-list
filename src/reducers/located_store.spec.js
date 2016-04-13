@@ -1,53 +1,59 @@
 import test from 'ava';
+import { createStore } from 'redux';
+import { assignAll } from 'redux-act';
+import { Map } from 'immutable';
 import reducer from './located_store';
-import {
-  LOCATE_OK,
-  LOCATE_REQUEST,
-  LOCATE_ERROR
-} from '../actions/find_store';
+import { locateStore, inputValChange } from '../actions/find_store';
 
-test('returns the default state', (assert) => {
-  const initialState = undefined;
-  const action = {};
-  const reducedState = reducer(initialState, action);
-  const expectedState = { store: {}, loading: false, inputVal: '01400301' };
+const initStore = (initialState) => {
+  const store = createStore(reducer, initialState);
+  return store;
+};
 
-  assert.same(reducedState, expectedState);
+test('sets loading to true for the specified id on locateStore.request', () => {
+  const initialState = Map().mergeIn([1], { loading: false });
+  const store = initStore(initialState);
+  const action = locateStore.request({ id: 1 });
+
+  store.dispatch(action);
+  store.getState().getIn([1, 'loading']).should.be.true;
 });
 
-test('sets loading to true on LOCATE_REQUEST', (assert) => {
-  const initialState = undefined;
-  const action = { type: LOCATE_REQUEST };
-  const reducedState = reducer(initialState, action);
+test('sets loading to false on locateStore.ok', () => {
+  const initialState = Map().mergeIn([1], { loading: true });
+  const store = initStore(initialState);
+  const action = locateStore.ok({ id: 1 });
 
-  assert.true(reducedState.loading);
+  store.dispatch(action);
+  store.getState().getIn([1, 'loading']).should.be.false;
 });
 
-test('sets loading to false on LOCATE_OK', (assert) => {
-  const initialState = { store: {}, loading: true };
-  const action = { type: LOCATE_OK };
-  const reducedState = reducer(initialState, action);
+test('merges response with state on locateStore.ok', () => {
+  const initialState = Map().mergeIn([1], { store: { foo: true } });
+  const store = initStore(initialState);
+  const action = locateStore.ok({ id: 1, store: { bar: true } });
 
-  assert.false(reducedState.loading);
+  store.dispatch(action);
+  store.getState().getIn([1, 'store']).should.have.keys({
+    foo: true,
+    bar: true
+  });
 });
 
-test('merges response with state on LOCATE_OK', (assert) => {
-  const initialState = { store: { foo: true } };
-  const action = { type: LOCATE_OK, payload: { bar: true } };
+test('sets loading to false on locateStore.error', () => {
+  const initialState = Map().mergeIn([1], { loading: true });
+  const store = initStore(initialState);
+  const action = locateStore.error({ id: 1 });
 
-  const reducedState = reducer(initialState, action);
-  const expectedState = {
-    store: { foo: true, bar: true },
-    loading: false
-  };
-
-  assert.same(reducedState, expectedState);
+  store.dispatch(action);
+  store.getState().getIn([1, 'loading']).should.be.false;
 });
 
-test('sets loading to false on LOCATE_ERROR', (assert) => {
-  const initialState = { store: {}, loading: true };
-  const action = { type: LOCATE_ERROR };
-  const reducedState = reducer(initialState, action);
+test('sets inputVal on inputValChange', () => {
+  const initialState = Map().mergeIn([1], { inputVal: '' });
+  const store = initStore(initialState);
+  const action = inputValChange({ id: 1, newVal: 'kittens!' });
 
-  assert.false(reducedState.loading);
+  store.dispatch(action);
+  store.getState().getIn([1, 'inputVal']).should.equal('kittens!');
 });
