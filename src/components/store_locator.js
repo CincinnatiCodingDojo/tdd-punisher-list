@@ -1,4 +1,5 @@
 import createStoreResult from './store_locator_result';
+import { Button, Input } from 'react-kuic';
 
 export default (React) => {
   const StoreLocatorResult = createStoreResult(React);
@@ -12,8 +13,8 @@ export default (React) => {
 
     return (
       <div className="StoreLocator">
-        <input type="text" value={inputVal} onChange={handleInputChange}/>
-        <button type="submit" onClick={handleClick}>Find</button>
+        <Input type="text" value={inputVal} onChange={handleInputChange}/>
+        <Button type="submit" onClick={handleClick}>Find</Button>
         <hr />
         { loading && <div className="StoreLocator-loading">Loading...</div> }
         { showStoreResult() }
