@@ -3,7 +3,7 @@ import { locateStore, inputValChange } from '../actions/find_store';
 import { getLocalState } from '../reducers/index';
 import createStoreLocator from '../components/store_locator';
 import { Map } from 'immutable';
-import 'react-kuic/dist/kuic.css';
+import 'react-kuic/lib/kuic.css';
 
 export default (React) => {
   const StoreLocator = createStoreLocator(React);

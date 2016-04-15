@@ -1,6 +1,6 @@
 {
   "name": "kroger-component-seed",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Kroger React Component Seed",
   "scripts": {
     "start": "node bin/server.js",
