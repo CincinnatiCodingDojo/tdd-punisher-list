@@ -20,9 +20,9 @@ docker-compose build
 docker-compose up
 ```
 
-### Start Dev Harness
+### Start Dev Server
 
-Starting the harness will:
+Starting the server will:
 
 - Serve your component at [localhost:3000](http://localhost:3000)
 
