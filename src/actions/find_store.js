@@ -5,14 +5,15 @@ import { createActionAsync } from 'redux-act-async';
 export const locateStore = createActionAsync('clicklist/storeLocator/LOCATE_STORE', locateApi);
 export const inputValChange = createAction('clicklist/storeLocator/LOCATE_INPUT_CHANGE');
 
-function locateApi({ id, storeId }) {
+function locateApi(storeId) {
   const query = `{
     store(storeId:"${storeId}") {
       addressLineOne,
       brand
     }
   }`;
-  const mapToPayload = ({ data }) => ({ id, store: data.data.store });
+
+  const mapToPayload = ({ data }) => data.data.store;
 
   // We are using axios, which works for any BFF, but if you are doing
   // GraphQL you should consider using Lokka: https://github.com/kadirahq/lokka

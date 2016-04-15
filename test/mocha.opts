@@ -2,3 +2,4 @@
 --require test/chai.opts.js
 --require babel-polyfill
 --ui bdd
+--reporter spec

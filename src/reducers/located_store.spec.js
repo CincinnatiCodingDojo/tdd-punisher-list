@@ -12,50 +12,50 @@ const initStore = (initialState) => {
 
 describe('Located Store Reducer', () => {
   it('sets loading to true for the specified id on locateStore.request', () => {
-    const initialState = Map().mergeIn([1], {loading: false});
+    const initialState = Map().merge({ loading: false });
     const store = initStore(initialState);
     const action = locateStore.request({id: 1});
 
     store.dispatch(action);
-    store.getState().getIn([1, 'loading']).should.be.true;
+    store.getState().get('loading').should.be.true;
   });
 
   it('sets loading to false on locateStore.ok', () => {
-    const initialState = Map().mergeIn([1], {loading: true});
+    const initialState = Map().merge({ loading: true });
     const store = initStore(initialState);
-    const action = locateStore.ok({id: 1});
+    const action = locateStore.ok({});
 
     store.dispatch(action);
-    store.getState().getIn([1, 'loading']).should.be.false;
+    store.getState().get('loading').should.be.false;
   });
 
   it('merges response with state on locateStore.ok', () => {
-    const initialState = Map().mergeIn([1], {store: {foo: true}});
+    const initialState = Map().mergeIn(['store'], { foo: true });
     const store = initStore(initialState);
-    const action = locateStore.ok({id: 1, store: {bar: true}});
-
+    const action = locateStore.ok({ bar: true });
+    
     store.dispatch(action);
-    store.getState().getIn([1, 'store']).should.have.keys({
+    store.getState().get('store').should.have.keys({
       foo: true,
       bar: true
     });
   });
 
   it('sets loading to false on locateStore.error', () => {
-    const initialState = Map().mergeIn([1], {loading: true});
+    const initialState = Map().merge({ loading: true });
     const store = initStore(initialState);
-    const action = locateStore.error({id: 1});
+    const action = locateStore.error();
 
     store.dispatch(action);
-    store.getState().getIn([1, 'loading']).should.be.false;
+    store.getState().get('loading').should.be.false;
   });
 
   it('sets inputVal on inputValChange', () => {
-    const initialState = Map().mergeIn([1], {inputVal: ''});
+    const initialState = Map().merge({ inputVal: '' });
     const store = initStore(initialState);
-    const action = inputValChange({id: 1, newVal: 'kittens!'});
+    const action = inputValChange('kittens!');
 
     store.dispatch(action);
-    store.getState().getIn([1, 'inputVal']).should.equal('kittens!');
+    store.getState().get('inputVal').should.equal('kittens!');
   });
 });
