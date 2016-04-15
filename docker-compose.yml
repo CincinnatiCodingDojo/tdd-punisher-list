@@ -11,7 +11,7 @@ services:
   test:
     image: docker.kroger.com/library/kroger-npm
     working_dir: /app
-    command: npm run watch
+    command: npm run test:watch
     volumes_from:
       - npm
   npm:

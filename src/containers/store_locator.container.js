@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { locateStore, inputValChange } from '../actions/find_store';
 import createStoreLocator from '../components/store_locator';
 import 'react-kuic/lib/kuic.css';
+import '../style/index.css';
 
 export default (React) => {
   const StoreLocator = createStoreLocator(React);
