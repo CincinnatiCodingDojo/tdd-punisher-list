@@ -1,13 +1,11 @@
 import {createStore} from 'redux';
-import {assignAll} from 'redux-act';
 import {Map} from 'immutable';
 import reducer from './located_store';
 import {locateStore, inputValChange} from '../actions/find_store';
 const { describe, it } = global;
 
 const initStore = (initialState) => {
-  const store = createStore(reducer, initialState);
-  return store;
+  return createStore(reducer, initialState);
 };
 
 describe('Located Store Reducer', () => {
@@ -33,7 +31,7 @@ describe('Located Store Reducer', () => {
     const initialState = Map().mergeIn(['store'], { foo: true });
     const store = initStore(initialState);
     const action = locateStore.ok({ bar: true });
-    
+
     store.dispatch(action);
     store.getState().get('store').should.have.keys({
       foo: true,

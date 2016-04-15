@@ -1,6 +1,6 @@
 {
   "name": "kroger-component-seed",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Kroger React Component Seed",
   "scripts": {
     "start": "node bin/server.js",
@@ -38,6 +38,7 @@
     "react-addons-test-utils": "15.0.1",
     "sinon": "1.17.3",
     "sinon-chai": "2.8.0",
-    "webpack-dev-server": "2.0.0-beta"
+    "webpack-dev-server": "2.0.0-beta",
+    "webpack": "2.1.0-beta.5"
   }
 }

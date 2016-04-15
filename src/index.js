@@ -18,7 +18,7 @@ export {
   /**
    * The redux reducer
    * @function
-   * @returns {reducer} The component's top level reducer
+   * @returns {Reducer} The component's top level reducer
    */
   reducer
 };
