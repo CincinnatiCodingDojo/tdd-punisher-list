@@ -1,5 +1,6 @@
 import createStoreResult from './store_locator_result';
 import { Text, Grid, GridCell, Input, Button, Spinner } from 'react-kuic';
+import 'react-kuic/lib/kuic.css';
 
 export default (React) => {
   const StoreLocatorResult = createStoreResult(React);
