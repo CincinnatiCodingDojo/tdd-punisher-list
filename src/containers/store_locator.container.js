@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { locateStore, inputValChange } from '../actions/find_store';
 import createStoreLocator from '../components/store_locator';
-import '../style/index.css';
+import '../components/store_locator.css';
 
 export default (React) => {
   const StoreLocator = createStoreLocator(React);
