@@ -1,29 +1,25 @@
+import React from 'react';
 import { connect } from 'react-redux';
 import { locateStore, inputValChange } from '../actions/find_store';
-import createStoreLocator from '../components/store_locator';
-import '../components/store_locator.css';
+import StoreLocator from '../components/store_locator';
 
-export default (React) => {
-  const StoreLocator = createStoreLocator(React);
+const mapStateToProps = (state) => {
+  const { store, inputVal, loading } = state.locatedStore.toJS();
 
-  const mapStateToProps = (state) => {
-    const { store, inputVal, loading } = state.locatedStore.toJS();
-
-    return {
-      store,
-      inputVal,
-      loading
-    };
+  return {
+    store,
+    inputVal,
+    loading
   };
-
-  const mapDispatchToProps = (dispatch, ownProps) => ({
-    locateStore(storeId) {
-      dispatch(locateStore(storeId));
-    },
-    inputValChange(newVal) {
-      dispatch(inputValChange(newVal));
-    }
-  });
-
-  return connect(mapStateToProps, mapDispatchToProps)(StoreLocator);
 };
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  locateStore(storeId) {
+    dispatch(locateStore(storeId));
+  },
+  inputValChange(newVal) {
+    dispatch(inputValChange(newVal));
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(StoreLocator);

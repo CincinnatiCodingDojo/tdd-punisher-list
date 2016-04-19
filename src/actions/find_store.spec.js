@@ -4,7 +4,7 @@ import { locateStore } from './find_store';
 const { describe, it } = global;
 
 describe('Store Locator Actions', () => {
-  it('locateStoreApi calls graphql with correct store id', async() => {
+  it('calls graphql with correct store id', async() => {
     const expectedQuery = 'storeId:"kitties"';
     const graphql = nock('http://localhost:8080')
       .post('/graphql', (body) => body.query.includes(expectedQuery))
@@ -15,7 +15,7 @@ describe('Store Locator Actions', () => {
     graphql.isDone().should.be.true;
   });
 
-  it('locateStoreApi maps to the correct payload', async() => {
+  it('maps to the correct payload', async() => {
     nock('http://localhost:8080')
       .intercept('/graphql', 'POST')
       .reply(200, {data: {store: 'OK'}});

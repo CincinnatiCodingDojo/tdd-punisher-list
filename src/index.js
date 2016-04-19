@@ -1,4 +1,4 @@
-import createComponent from './containers/store_locator.container';
+import Component from './containers/store_locator.container';
 import reducer from './reducers';
 
 /**
@@ -8,12 +8,11 @@ import reducer from './reducers';
 export {
 
   /**
-   * A factory function that returns the React component
+   * A React component
    * @function
-   * @param {Object} React - the react object
    * @returns {Component} The component
    */
-  createComponent,
+  Component,
 
   /**
    * The redux reducer

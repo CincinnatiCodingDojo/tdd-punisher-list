@@ -1,10 +1,8 @@
 import React from 'react';
 import sinon from 'sinon';
-import {render, shallow} from 'enzyme';
-import component from './store_locator';
-const {describe, it} = global;
-
-const Component = component(React);
+import { render, shallow } from 'enzyme';
+import Component from './store_locator';
+const { describe, it } = global;
 
 describe('Store Locator Component', () => {
   it('shows loading when prop is true', () => {

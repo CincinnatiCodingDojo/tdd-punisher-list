@@ -1,4 +1,6 @@
-export default (React) => ({ store }) => {
+import React from 'react';
+
+export default ({ store }) => {
   return (
     <div className="StoreLocator-results">
       <div>{store.brand}</div>

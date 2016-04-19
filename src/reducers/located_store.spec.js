@@ -1,7 +1,7 @@
-import {createStore} from 'redux';
-import {Map} from 'immutable';
+import { createStore } from 'redux';
+import { Map } from 'immutable';
 import reducer from './located_store';
-import {locateStore, inputValChange} from '../actions/find_store';
+import { locateStore, inputValChange } from '../actions/find_store';
 const { describe, it } = global;
 
 const initStore = (initialState) => {
