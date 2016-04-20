@@ -1,4 +1,4 @@
-@import 'react-kuic/lib/KuicVariables.css';
+@import '~react-kuic/lib/KuicVariables.css';
 
 .StoreLocator, .StoreLocator * {
   box-sizing: border-box;
