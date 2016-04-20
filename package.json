@@ -1,8 +1,11 @@
 {
   "name": "kroger-component-seed",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Kroger React Component Seed",
   "main": "src/index.js",
+  "files": [
+    "src"
+  ],
   "scripts": {
     "start": "node bin/server.js",
     "lint": "eslint .",
@@ -33,7 +36,7 @@
     "eslint": "2.7.0",
     "eslint-config-kroger": "1.0.0",
     "ignore-styles": "1.2.0",
-    "kroger-component-dev-harness": "4.0.0",
+    "kroger-component-dev-harness": "4.0.1",
     "kroger-webpack-config": "2.0.1",
     "mocha": "2.4.5",
     "nock": "7.7.2",
