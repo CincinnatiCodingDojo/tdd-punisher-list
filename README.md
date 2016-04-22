@@ -1,21 +1,41 @@
 ## Kroger React Seed
 
-### Setup
+### Environment Setup
+
+- Node v5.10+ and npm v3.8+ (check with `node -v` and `npm -v`). If you are behind on the version, run the following commands:
+```bash
+sudo npm i -g n
+sudo n latest
+```
+> Be sure to exit the terminal and open a new one.
+  
+- docker-compose v1.6+ (check with `docker-compose -v`). If you are behind on the version, run the following commands:
+```bash
+sudo -i
+curl -L https://github.com/docker/compose/releases/download/1.7.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+chmod +rx /usr/local/bin/docker-compose
+exit
+```
+> Be sure to exit the terminal and open a new one.
+ 
+### Seed Setup
 
 ```bash
-git clone http://stash.kroger.com/scm/dcpce/kroger-component-seed.git <your-comp-dir-name>
-cd <your-comp-dir-name>
+git clone http://stash.kroger.com/scm/dcpce/kroger-component-seed.git ~/projects/<your-comp-dir-name>
+cd ~/projects/<your-comp-dir-name>
 git remote set-url origin <your-stash-repo-url>
 npm install
 ```
 
-### Setup w/ BFF
+### BFF Setup
 
-To see the component example working with the GraphQL BFF you need to also clone it and have it running.
+The BFF seed is a different project, but this seed was designed to work with the Store Locator example endpoint in the BFF seed.
+
+To see the component example working with the GraphQL BFF you'll need to clone it and have it running as well.
 
 ```bash
-git clone http://stash.kroger.com/scm/dcpce/bff-seed.git <your-bff-dir-name>
-cd <your-bff-dir-name>
+git clone http://stash.kroger.com/scm/dcpce/bff-seed.git ~/projects/<your-bff-dir-name>
+cd ~/projects/<your-bff-dir-name>
 docker-compose build
 docker-compose up
 ```
@@ -34,7 +54,7 @@ npm start
 
 ```bash
 npm test
-npm test -- --watch
+npm run test:watch
 ```
 
 ### Getting Data
@@ -84,6 +104,32 @@ then run `npm set registry http://npm.kroger.com`
 1. When you make any changes, increment your package.json version.
 >Follow the guideline: **Breaking.Feature.FixOrChore** when considering
 your new version number. Then publish again.
+
+### Features
+
+Dumb Component (`src/components`):
+- KUIC - Kroger UI Components
+- CSS
+- [Functional stateless pattern](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions)
+- Component testing with enzyme
+
+Smart/Connected Component (`src/containers`):
+- [Connects](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options) dumb component to redux store
+
+Redux:
+- Actions (`src/actions`) with tests
+- Reducers (`src/reducers`) with tests
+
+Testing:
+- Mocha, Chai, Sinon
+- See test/README.md for more details
+
+Serve with Webpack:
+- Live Reload
+
+Other:
+- eslint and editorconfig
+- fully commented code
 
 ### FAQ
 

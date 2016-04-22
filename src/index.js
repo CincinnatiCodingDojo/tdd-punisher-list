@@ -2,8 +2,7 @@ import Component from './containers/store_locator.container';
 import reducer from './reducers';
 
 /**
- * This index MUST export createComponent and reducer to work
- * with the dev harness.
+ * This index MUST export Component and reducer to work with the dev harness.
  */
 export {
 
