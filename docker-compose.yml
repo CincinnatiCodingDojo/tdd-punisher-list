@@ -1,30 +1,30 @@
-version: '2'
-services:
-  component:
-    image: docker.kroger.com/library/kroger-npm
-    working_dir: /app
-    command: npm start
-    volumes_from:
-      - npm
-    ports:
-      - 3000:3000
-  test:
-    image: docker.kroger.com/library/kroger-npm
-    working_dir: /app
-    command: npm run test:watch
-    volumes_from:
-      - npm
-  npm:
-    image: docker.kroger.com/library/kroger-npm
-    volumes:
-      - .:/app
-    working_dir: /app
-    entrypoint: npm
-    command: --version
-  api:
-    image: docker.kroger.com/punisher/apistub
-    command: start
-    volumes:
-      - ./apistub.js:/app/server.js:ro
-    ports:
-      - 3002:3002
+component:
+  image: docker.kroger.com/library/kroger-npm
+  working_dir: /app
+  command: npm start
+  environment:
+    - HOST=0.0.0.0
+  volumes_from:
+    - npm
+  ports:
+    - 3000:3000
+test:
+  image: docker.kroger.com/library/kroger-npm
+  working_dir: /app
+  command: npm run test:watch
+  volumes_from:
+    - npm
+npm:
+  image: docker.kroger.com/library/kroger-npm
+  volumes:
+    - .:/app
+  working_dir: /app
+  entrypoint: npm
+  command: --version
+api:
+  image: docker.kroger.com/punisher/apistub
+  command: start
+  volumes:
+    - ./apistub.js:/app/server.js:ro
+  ports:
+    - 3002:3002
