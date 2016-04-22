@@ -5,7 +5,7 @@ const webpack = require('webpack');
 const config = require('kroger-webpack-config');
 const path = require('path');
 
-const HOST = process.env.HOST || 'localhost';
+const HOST = process.env.HOST || '0.0.0.0';
 const PORT = process.env.PORT || 3000;
 
 config.entry.unshift(`webpack-dev-server/client?http://${HOST}:${PORT}/`, 'webpack/hot/only-dev-server');

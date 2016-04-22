@@ -21,3 +21,10 @@ services:
     working_dir: /app
     entrypoint: npm
     command: --version
+  api:
+    image: docker.kroger.com/punisher/apistub
+    command: start
+    volumes:
+      - ./apistub.js:/app/server.js:ro
+    ports:
+      - 3002:3002

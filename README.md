@@ -37,6 +37,26 @@ npm test
 npm test -- --watch
 ```
 
+### Getting Data
+
+You have two options for getting data into your project. The first is the `api-stub` that ships with this project. In the file `apistub.js` you can mock any responses that you expect from your BFF. A very simple implementation could be:
+
+```js
+{
+    path: '/cart/show',
+    data: {
+      products: [
+        one: { upc: 'ABC', price: 2.99 },
+        two: { upc: 'DEF', price: 0.99 }
+      ]
+    }
+  },
+```
+
+The api stub is already setup to run in docker locally. Just run `docker-compose up` using the existing `docker-compose.yml` and your data will be available at `localhost:3002/cart/show`. For more advanced instructions on mocking your endpoint data, see the [README](http://stash.kroger.com/projects/DCPCE/repos/api-stub/browse/README.md) of the api-stub project.
+
+The other option for getting data is to actually run your BFF application. If you don't currently have a BFF you can clone the [BFF Seed Project](http://stash.kroger.com/projects/DCPCE/repos/bff-seed/browse) and run `docker-compose up`.
+
 ### Publishing Your Component to [npm.kroger.com](http://npm.kroger.com)
 
 1. Update the following fields in your `package.json`
