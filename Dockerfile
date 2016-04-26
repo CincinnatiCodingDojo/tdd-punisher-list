@@ -1,4 +1,4 @@
-FROM docker.kroger.com/library/kroger-npm
+FROM node:latest
 
 EXPOSE 3000
 

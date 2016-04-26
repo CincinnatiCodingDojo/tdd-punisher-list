@@ -3,8 +3,6 @@
 const WebpackDevServer = require('webpack-dev-server');
 const webpack = require('webpack');
 
-// Pull in our shared webpack config. Feel free to use your own with caution.
-const config = require('kroger-webpack-config');
 const path = require('path');
 
 const HOST = process.env.HOST || '0.0.0.0';

@@ -1,12 +1,6 @@
 var API = require('./src/api');
 
 var setting = [
-  // {
-  //   path: '__PROXY__',
-  //   data: {
-  //     url: 'http://ecsb-dev.kroger.com'
-  //   }
-  // },
   {
     path: '/superfast',
     data: {
