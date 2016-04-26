@@ -1,22 +1,30 @@
-import Component from './containers/store_locator.container';
-import reducer from './reducers';
+import React from 'react';
+import { render } from 'react-dom';
 
-/**
- * This index MUST export Component and reducer to work with the dev harness.
- */
-export {
 
-  /**
-   * A React component
-   * @function
-   * @returns {Component} The component
-   */
-  Component,
+let PunisherList = React.createClass({
+  addToList(){
+    let newPunishee = {name: this.refs.newPunishee.value, isPunished: false};
+    this.state.list = [...this.state.list, newPunishee];
+    this.setState({ list : this.state.list });
+  },
 
-  /**
-   * The redux reducer
-   * @function
-   * @returns {Reducer} The component's top level reducer
-   */
-  reducer
-};
+  getInitialState() {
+   return { list: [] };
+  },
+  render() {
+    return (
+     <div>
+       <input name="newPunishee" ref="newPunishee" />
+       <button className="addBtn" onClick={this.addToList}>Add To List</button>
+       <ul>
+         {this.state.list.map((item, index) => <li key={index}>{item.name}</li>)}
+       </ul>
+     </div>
+    )
+  }
+})
+
+
+
+export default PunisherList;

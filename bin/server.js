@@ -16,7 +16,7 @@ config.entry.unshift(`webpack-dev-server/client?http://${HOST}:${PORT}/`, 'webpa
 // because it's meant to 'plug in' to a larger app. So we have an npm module that simulates a small app that can
 // load your component up on the page. So we add dev-harness/root.js as our entry. It knows to find your src/index
 // file and use the reducer and Component exports to get things working.
-config.entry.push(path.resolve('node_modules/kroger-component-dev-harness/root.js'));
+config.entry.push(path.resolve('./src/app.js'));
 
 const compiler = webpack(config);
 
